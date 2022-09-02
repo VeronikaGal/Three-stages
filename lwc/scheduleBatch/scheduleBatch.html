@@ -1,0 +1,55 @@
+<template>
+    <lightning-card>
+        <div class="slds-text-heading_medium">
+            <div class="slds-align_absolute-center">Title</div>
+            <hr style="width: 100%"/>
+            <p>&nbsp;&nbsp;&nbsp;Schedule Batch</p>
+        </div>
+        <article class="slds-card">
+            <div class="slds-card__body slds-card__body_inner">
+                Description Batch
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="form-element-help-01">
+                        <abbr class="slds-required" title="required">*</abbr>CRON String</label>
+                    <div class="slds-form-element__icon">
+                        <button class="slds-button slds-button_icon">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Help</span>
+                        </button>
+                    </div>
+                    <div class="slds-form-element__control">
+                        <lightning-input if:false={scheduleJobId} type="text" id="text-input-id-49"
+                                         placeholder="0 0 0 * * ?"
+                                         onchange={handleInputChange}
+                                         variant="label-hidden" label=" "></lightning-input>
+                        <lightning-input if:true={scheduleJobId} type="text"
+                                         placeholder="0 0 0 * * ?"
+                                         variant="label-hidden" label=" " disabled></lightning-input>
+                    </div>
+                    <p>
+                        <lightning-formatted-url
+                                value="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_scheduler.htm"
+                                label="Read more about scheduling" target="_blank"></lightning-formatted-url>
+                    </p>
+                </div>
+                <footer class="slds-card__footer">
+                    <div class="slds-p-bottom_x-large">
+                        <div class="slds-float_right">
+                            <button type="button" class="slds-button slds-button_brand" onclick={executeBatch}>Run
+                                Once
+                            </button>
+                            <button if:false={scheduleJobId} type="button" class="slds-button slds-button_brand"
+                                    onclick={scheduleBatch}>Schedule batch
+                            </button>
+                            <button if:true={scheduleJobId} type="button" class="slds-button slds-button_destructive"
+                                    onclick={abortBatch}>Abort Batch
+                            </button>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </article>
+    </lightning-card>
+</template>

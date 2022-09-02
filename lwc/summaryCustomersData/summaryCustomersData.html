@@ -1,0 +1,101 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+            &nbsp;&nbsp;Accounts
+        </h3>
+        <p if:false={recordId} class="slds-p-horizontal_small">
+            <lightning-input type="search" class="slds-m-bottom_small" label="Search Account Name"
+                             onchange={handleAccountAction}></lightning-input>
+        </p>
+
+        <lightning-accordion allow-multiple-sections-open>
+            <template for:each={accounts} for:item="account">
+                <lightning-accordion-section key={account.account} name={account.account}
+                                             label={account.account}>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+                           aria-label="Example table of Opportunities with vertical borders">
+                        <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col">Opportunity Name</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Close Date</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Products</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <template for:each={account.listOpportunities} for:item="list">
+                            <tr key={list.Id} name={list.Id}>
+                                <th scope="row">{list.Name}</th>
+                                <td>{list.CreatedDate}</td>
+                                <td>{list.CloseDate}</td>
+                                <td>{list.Amount}</td>
+                                <td>
+                                    <lightning-button
+                                            value={list.Id}
+                                            label="Products"
+                                            onclick={show}>
+                                    </lightning-button>
+                                </td>
+                            </tr>
+                        </template>
+                        </tbody>
+                    </table>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+        <template if:true={openModal}>
+            <div class="slds-modal slds-fade-in-open slds-backdrop">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        Products
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+                               aria-label="Example table of Opportunities with vertical borders">
+                            <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Total Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <template for:each={products} for:item="product">
+                                <tr key={product.Id} name={product.Id}>
+                                    <th scope="row">{product.Product2.Name}</th>
+                                    <td>{product.Quantity}</td>
+                                    <td>{product.UnitPrice}</td>
+                                    <td>{product.TotalPrice}</td>
+                                </tr>
+                            </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning-button icon-name="utility:close" label="close" variant="brand" onclick={closeModal}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <lightning-layout if:false={recordId} horizontal-align="space">
+            <lightning-layout-item flexibility="auto">
+                <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                </lightning-button>
+            </lightning-layout-item>
+
+            <lightning-layout-item flexibility="auto">
+                Page {page} of {totalPage}
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto">
+                <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                                  onclick={nextHandler}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
+

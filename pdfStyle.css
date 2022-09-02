@@ -1,0 +1,122 @@
+@page {
+    margin: 330px 10px 213px 10px;
+    @top-left {
+        content: element(header);
+    }
+    @bottom-left {
+        content: element(footer);
+    }
+}
+
+div.header {
+    position: running(header);
+    width: 100%;
+    margin-right: 10px;
+}
+
+div.footer {
+    position: running(footer);
+    width: 100%;
+    margin-right: 10px;
+}
+
+.header {
+    font: normal 14px Arial, Helvetica, Sans-serif;
+    background-color: #F5F5F5;
+    display: inline-block;
+    border-top: 20px solid #ff512a;
+}
+
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.organization {
+    font: normal 14px Arial, Helvetica, Sans-serif;
+    color: #606060;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.invoice {
+    color: #606060;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 40px;
+    margin-left: 280px;
+    display: inline-block;
+}
+
+.footer {
+    font: normal 20px Arial, Helvetica, Sans-serif;
+    text-align: center;
+    background-color: #ff512a;
+    color: #feebff;
+}
+
+.bill {
+    color: #606060;
+    margin-left: 25px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 97%;
+    top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.cell-0 {
+    border-right: 1px solid #bdbebd;
+    border-left: 1px solid #bdbebd;
+}
+
+.cell-1 {
+    text-align: center;
+    border-right: 1px solid #bdbebd;
+    border-left: 1px solid #bdbebd;
+}
+
+.cell-2 {
+    text-align: right;
+    border-right: 1px solid #bdbebd;
+    border-left: 1px solid #bdbebd;
+}
+
+.head-table {
+    border-collapse: collapse;
+    background-color: #ff512a;
+    border-color: #ff512a;
+    color: #feebff;
+    text-align: center;
+}
+
+.balance {
+    text-align: right;
+    font-size: large;
+    font-weight: bold;
+    color: #191970;
+}
+
+.total {
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: large;
+    border-top: #606060 1px solid;
+    border-bottom: #606060 1px solid;
+    border-right: transparent;
+    border-left: transparent;
+    background-color: #FF8FB4;
+}
+
+
+
